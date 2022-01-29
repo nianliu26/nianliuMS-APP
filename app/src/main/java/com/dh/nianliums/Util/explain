@@ -1,0 +1,24 @@
+文件说明：
+1、JSONhandle
+    JSON文件处理类，负责将字符串内容构造成JSON对象，以及解析服务器发送过来的JSON对象
+    (1)构造json对象：
+        创造一个空的JSONObject对象,通过jsonobject.put(k,v)将数据放入对象中
+        通过JSONObject.toJSONString(JSONObject)将JSON对象转换成字符串
+        通过StringEntity 的构造方法设置JSON字符串的编码格式为utf-8,然后返回
+    (2)解析json对象：
+        使用Gson库对其进行解析，解析的数据放到Module包中对应的对象之中，然后返回
+2、HttpClientTool:
+    实现和服务器的http连接，将json对象发送到服务器，以及接收服务器的json对象
+    (1)发送数据
+        通过String.valueOf()方法将json对象转换为字符串
+        通过设置URL对象，使用URL对象的openConnection()方法获取一个HttpURLConnection对象
+        设置HttpURLConnection对象的属性
+        使用HttpURLConnection对象的getOutputStream()方法获得一个输出流对象
+            注：可以通过BufferedInputStream的构造方法将获取到的输出流对象转换为字节流对象
+        通过字符/字节流对象的write方法将json数据写入服务器
+        关闭输出流
+    (2)接收数据：
+        直接使用发送数据时创建的HttpURLConnection对象的getInputStream获取输入流对象
+            注：也可使用BufferedInputStream的构造方法将获取到的输入流对象转换为字节流对象
+        通过read方法读取输入流的数据
+        将读取到的字符串通过JSONObject.fromObject()方法转换为JSONObject并返回

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--大致思想：
+        注册页面每次只显示一个logo，一个提示标签，一个输入框，一个下一步按钮和一个上一步按钮
+        在选择头像页面只需要一个提示信息，圆形图像显示框，一个选择按钮，和一个注册按钮
+        头像选择在最后一步
+        只有输入框内容符合要求才能点击下一步按钮
+        点击下一步按钮，更换提示信息，并获取输入框内容
+        切换下一步或者上一步都自动在输入框显示
+    -->
+
+
+
+    <!--先放一个占位符-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/void_v"/>
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="180dp"
+        android:layout_below="@+id/void_v"
+        android:background="@color/theme"
+        android:layout_centerHorizontal="true"
+        android:src="@null"
+        android:id="@+id/logon_logo"
+        android:visibility="visible"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/logon_logo"
+        android:background="@drawable/shape_input"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ll_1"
+        android:visibility="visible">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="确认密码："
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:id="@+id/text_lag" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:layout_marginEnd="15dp"
+            android:background="@null"
+            android:lines="1"
+            android:maxLength="15"
+            android:id="@+id/input_data"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="两次密码不一致！"
+        android:textSize="25dp"
+        android:textColor="#FB0909"
+        android:layout_below="@+id/ll_1"
+        android:visibility="gone"
+        android:id="@+id/erro_password"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="点此选择出生日期"
+        android:layout_below="@+id/logon_logo"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/shape_input"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:id="@+id/check_data"/>
+
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/void_v2"
+        android:layout_alignParentBottom="true"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:layout_above="@+id/void_v2"
+        android:id="@+id/ll_2"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/last"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:text="上一步"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@drawable/shape_unable"
+            android:visibility="visible"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/next_and_enter"
+            android:text="下一步"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:background="@drawable/selector_click"
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"/>
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/user_layout"
+        android:layout_below="@+id/void_v"
+        android:visibility="gone">
+        <!--头像框-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/user_card"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="80dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher_background"
+                android:id="@+id/user_photo"/>
+
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击头像框设置选择头像"
+            android:layout_below="@+id/user_card"
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/photo_text"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/data_layout"
+        android:visibility="gone">
+        <!--日期选择页面-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="选择出生日期"
+            android:id="@+id/data_lag"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@color/theme"/>
+
+        <DatePicker
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/chose_data"
+            android:layout_below="@+id/data_lag"
+            android:visibility="visible"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:text="确定"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/chose_data"
+            android:id="@+id/data_enter"
+            android:background="@drawable/selector_click"
+            android:gravity="center"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

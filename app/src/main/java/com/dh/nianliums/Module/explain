@@ -1,0 +1,55 @@
+包内文件说明：
+    1、public class CheckIn：       保存服务器发送的签到数据
+        数据编号：number，int
+        员工编号：name，int
+        员工名称：nickname,String
+        登记时间：record，Date
+        签到状态：condition，String
+        领取工具：instrumentNumber，int
+        负责区域：zoneNumber，int
+        备注信息：information1，String
+    2、public class Damage:         用于保存服务器发送的工具损坏信息
+        数据编号：number，int
+        工具编号：instrumentNumber，int
+        申报人：declare，int
+        审批人：investigate，int
+        审批状态：reviewStatus，String
+        备注信息：information2，String
+    3、public class Employee：      用于保存服务器返回的用户数据
+        员工编号：name，String//不用输入
+        员工姓名：nickname,String
+        登录密码：password，String
+        员工性别：sex，String
+        出生日期：birthday，Date
+        用户照片：photo，File
+        联系电话：phone，String
+        家庭地址： address，String
+        负责区域：zoneNumber，int//不用输入
+        员工备注：informationE，String//不用输入
+        注册时间：registered，Date//不用输入
+    4、public class EmployeeChange：用于保存服务器发送的人员流动数据
+        数据编号：number，int
+        员工编号：name，int
+        员工名称：nickname,String
+        流动状态：changeStatus，String
+        记录日期：changeData，Data
+        备注信息：information3，String
+    5、public class Instrument：    保存服务器发送的工具数据
+        工具编号：instrumentNumber，int
+        工具名称：instrument，String
+        工具状况：instrumentStatus，String
+        备注信息：informationI，String
+    6、public class Leave：         用于保存服务器发送的请假数据
+        数据编号：number，int
+        员工编号：name，int
+        员工名称：nickname,String
+        请假时间：leaveData，Data
+        请假原因：cause，String
+        审批状态：leaveStatus，String
+        审批人：leaveInvestigate，int
+        备注信息：information4，String
+    7、public class Zone：          获取服务器查询到的区域信息
+        区域编号：zoneNumber，int
+        区域名称：zone，String
+        备注信息：informationZ，String
+
